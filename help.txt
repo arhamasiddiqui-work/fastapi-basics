@@ -1,0 +1,12 @@
+uv run fastapi dev
+
+swagger UI: /docs, api documented tool where we can test api without postman
+
+routes: url path, where we perform specific functions
+
+restapi: main purpose data exchange b/w user&server
+
+source .venv/bin/activate -> to activate (.venv) virtual environment
+requirements-venv.txt -> will show all dependencies/packages just like pyproject.toml
+
+deactivate -> return to your normal system environment
