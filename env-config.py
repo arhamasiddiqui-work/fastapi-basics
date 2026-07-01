@@ -6,21 +6,20 @@ from fastapi.middleware.cors import CORSMiddleware
 from config import settings
 
 
-app= FastAPI()
+app = FastAPI()
 
 # Allow origin (FRONT-END URL)
-origins=settings.origins      # using Settings from config
+origins = settings.origins  # using Settings from config
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,       # allowed FE
+    allow_origins=origins,  # allowed FE
     allow_credentials=True,
-    allow_methods=["*"],        # allowed get,post,put,delete
-    allow_headers=["*"]         
-    )
+    allow_methods=["*"],  # allowed get,post,put,delete
+    allow_headers=["*"],
+)
+
 
 @app.get("/")
 def Home():
-    return{
-        "message":"CORS enable API"
-    }
+    return {"message": "CORS enable API"}

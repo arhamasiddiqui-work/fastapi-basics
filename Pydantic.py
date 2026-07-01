@@ -22,6 +22,7 @@ class Address(BaseModel):
     city: str
     pincode: int
 
+
 class Citizen(BaseModel):
     name: str
     age: int

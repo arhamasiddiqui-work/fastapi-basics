@@ -3,22 +3,26 @@
 from fastapi import FastAPI, Request
 import time
 
-app=FastAPI()
+app = FastAPI()
+
 
 @app.middleware("http")
-async def my_midware(request:Request, call_next): # call_next is a function jo request ko agle middleware ya route handler tak bhejta h and response ko wapas laata h
+async def my_midware(
+    request: Request, call_next
+):  # call_next is a function jo request ko agle middleware ya route handler tak bhejta h and response ko wapas laata h
     print("Request received")
 
-    response= await call_next(request)
+    response = await call_next(request)
     print("response send")
     return response
 
+
 # e.g, logging middleware:
 @app.middleware("http")
-async def log_middleware(request:Request, call_next):
+async def log_middleware(request: Request, call_next):
     start_time = time.time()
 
-    response= await call_next(request)
+    response = await call_next(request)
 
     process_time = time.time() - start_time
     print(f"Path:{request.url.path} | Time:{process_time}")

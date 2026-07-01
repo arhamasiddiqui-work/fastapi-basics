@@ -12,16 +12,19 @@ class Task(BaseModel):
     title: str
     completed: bool
 
+
 # create task
 @app.post("/tasks")
 def createTask(task: Task):
     tasks.append(task)
     return {"message": "Task added", "data": tasks}
 
+
 # read task
 @app.get("/tasks")
 def readTask():
     return tasks
+
 
 # read single task
 @app.get("/tasks/{task_id}")
@@ -31,6 +34,7 @@ def getSingleTask(task_id: int):
             return task
     return {"error": "Task not found"}
 
+
 # update task
 @app.put("/tasks/{task_id}")
 def updatedTask(task_id: int, updatedTask: Task):
@@ -39,6 +43,7 @@ def updatedTask(task_id: int, updatedTask: Task):
             tasks[index] = updatedTask
             return {"message": "Task updated", "data": updatedTask}
     return {"error": "Task not found"}
+
 
 # delete task
 @app.delete("/tasks/{task_id}")

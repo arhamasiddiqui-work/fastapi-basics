@@ -15,7 +15,7 @@ last_fetch = 0
 
 @app.get("/news")
 def get_news():
-    global cache_data, last_fetch   
+    global cache_data, last_fetch
 
     start = time.time()
 
@@ -30,7 +30,7 @@ def get_news():
             item.text.strip()
             for item in soup.find_all(
                 "div",
-                class_="IndexCardHeading-styles__TitleWrapperStyled-sc-c7d910a6-0 hEhfIe"
+                class_="IndexCardHeading-styles__TitleWrapperStyled-sc-c7d910a6-0 hEhfIe",
             )
         ]
 
@@ -42,7 +42,4 @@ def get_news():
     end = time.time()
     time_taken = round(end - start, 5)
 
-    return {
-        "time_taken": time_taken,
-        "news": cache_data
-    }
+    return {"time_taken": time_taken, "news": cache_data}
